@@ -1,4 +1,5 @@
 plugins {
+    id 'java'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
@@ -7,7 +8,7 @@ plugins {
 
 version = '1.0.0'
 group = 'com.mikers.snuffles'
-archivesBaseName = 'mikers_snuffles'
+base.archivesName = 'mikers_snuffles'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
@@ -16,7 +17,6 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 minecraft {
     mappings channel: 'official', version: '26.2'
 
-    // Настройки запуска для тестирования в среде разработки (необязательно для сборки)
     runs {
         client {
             workingDirectory project.file('run')
@@ -41,12 +41,9 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:26.2-60.0.0"
-    
-    // Зависимость GeckoLib для Forge 26.2 (версия может потребовать уточнения)
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-26.2:5.5.5')
 }
 
-// Настройка JAR-файла
 jar {
     manifest {
         attributes([
