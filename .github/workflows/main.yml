@@ -26,6 +26,10 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./gradlew
 
+    # НОВЫЙ ШАГ: Принудительное обновление зависимостей
+    - name: Refresh Dependencies
+      run: ./gradlew --refresh-dependencies
+
     - name: Build with Gradle
       run: ./gradlew build
 
