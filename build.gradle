@@ -1,31 +1,62 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
 }
 
-version = mod_version
- group = mod_group
-base { archivesName = mod_id }
+version = '1.0.0'
+group = 'com.mikers.snuffles'
+archivesBaseName = 'mikers_snuffles'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-minecraft { mappings channel: 'official', version: minecraft_version
-    copyIdeResources = true
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
+minecraft {
+    mappings channel: 'official', version: '26.2'
+
+    // Настройки запуска для тестирования в среде разработки (необязательно для сборки)
     runs {
-        configureEach { workingDirectory project.file('run'); mods { mikers_snuffles { source sourceSets.main } } }
-        client { }
-        server { args '--nogui' }
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                mikers_snuffles {
+                    source sourceSets.main
+                }
+            }
+        }
     }
 }
 
-repositories { maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' } }
-
-dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
+repositories {
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    mavenCentral()
 }
 
-processResources {
-    def props = [mod_id: mod_id, mod_version: mod_version]
-    inputs.properties props
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand props }
+dependencies {
+    minecraft "net.minecraftforge:forge:26.2-60.0.0"
+    
+    // Зависимость GeckoLib для Forge 26.2 (версия может потребовать уточнения)
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-26.2:5.5.5')
+}
+
+// Настройка JAR-файла
+jar {
+    manifest {
+        attributes([
+            "Specification-Title"     : "mikers_snuffles",
+            "Specification-Vendor"    : "Mikers01",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.jar.archiveVersion,
+            "Implementation-Vendor"   : "Mikers01",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
 }
