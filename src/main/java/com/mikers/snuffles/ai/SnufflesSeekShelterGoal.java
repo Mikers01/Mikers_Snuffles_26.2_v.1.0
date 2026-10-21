@@ -17,7 +17,7 @@ public class SnufflesSeekShelterGoal extends Goal {
     
     @Override
     public boolean canUse() {
-        if (mob.level().isDay() || mob.getTarget() != null || mob.getSnufflesState() == SnufflesState.SLEEP || !mob.level().canSeeSky(mob.blockPosition())) 
+        if (mob.level().isDay() || mob.getTarget() != null || mob.getState() == SnufflesState.SLEEP || !mob.level().canSeeSky(mob.blockPosition())) 
             return false;
         
         BlockPos origin = mob.blockPosition();
