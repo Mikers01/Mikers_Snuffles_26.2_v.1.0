@@ -2,7 +2,8 @@ package com.mikers.snuffles.ai;
 
 import com.mikers.snuffles.entity.SnufflesEntity;
 import com.mikers.snuffles.entity.SnufflesState;
-import net.minecraft.core.BlockPos;
+// В 26.2 BlockPos переехал в core, это верный путь
+import net.minecraft.core.BlockPos; 
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
