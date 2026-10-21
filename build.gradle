@@ -17,9 +17,10 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 minecraft {
     mappings channel: 'official', version: '26.2'
 
+    // Исправленный блок runs для ForgeGradle 7
     runs {
-        client {
-            workingDirectory project.file('run')
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -28,6 +29,8 @@ minecraft {
                 }
             }
         }
+        client {}
+        server { args '--nogui' }
     }
 }
 
