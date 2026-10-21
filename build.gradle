@@ -12,14 +12,11 @@ base.archivesName = 'mikers_snuffles'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-
 minecraft {
-    mappings channel: 'official', version: '26.2'
+    mappings channel: 'official', version: project.minecraft_version
 }
 
 repositories {
-    // Официальный синтаксис GeckoLib для ForgeGradle 7
     exclusiveContent {
         forRepository {
             maven {
@@ -35,9 +32,8 @@ repositories {
 }
 
 dependencies {
-    minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
-    // Используем локальный файл
-    implementation files('libs/geckolib-forge-26.2-5.5.6.jar')
+    minecraft.dependency "net.minecraftforge:forge:${project.forge_version}"
+    implementation minecraft.dependency("com.geckolib:geckolib-forge-${project.minecraft_version}:${project.geckolib_version}")
 }
 
 jar {
