@@ -2,8 +2,8 @@ name: Build Mod
 
 on:
   push:
-    branches: [ "main" ] # Запускать сборку при загрузке кода в главную ветку
-  workflow_dispatch: # Позволяет вручную нажать кнопку запуска
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,8 +19,9 @@ jobs:
         java-version: '25'
         distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+    # Принудительно задаем версию Gradle, совместимую с ForgeGradle 7
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 9.3.0
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
