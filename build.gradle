@@ -16,7 +16,6 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 
 minecraft {
     mappings channel: 'official', version: '26.2'
-    // Блок runs удалён, так как он вызывает ошибки в ForgeGradle 7 и не нужен для сборки
 }
 
 repositories {
@@ -28,8 +27,11 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:26.2-60.0.0"
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-26.2:5.5.5')
+    // Для ForgeGradle 7 зависимость Minecraft указывается через minecraft.dependency()
+    minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
+    
+    // GeckoLib тоже через minecraft.dependency()
+    implementation minecraft.dependency('com.geckolib:geckolib-forge-26.2:5.5.5')
 }
 
 jar {
