@@ -13,7 +13,7 @@ base.archivesName = 'mikers_snuffles'
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 minecraft {
-    mappings channel: 'official', version: project.minecraft_version
+    mappings channel: 'official', version: '26.2'
 }
 
 repositories {
@@ -21,8 +21,10 @@ repositories {
 }
 
 dependencies {
-    minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
-    // Используем локальный файл GeckoLib, который лежит в папке libs
+    // ИСПРАВЛЕНО: Используем реальную версию Forge для 26.2
+    minecraft.dependency "net.minecraftforge:forge:26.2-65.1.0"
+    
+    // Используем локальный файл GeckoLib
     implementation files('libs/geckolib-forge-26.2-5.5.6.jar')
 }
 
