@@ -32,8 +32,8 @@ repositories {
 dependencies {
     minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
     
-    // Для GeckoLib 5.x в ForgeGradle 7 используется именно такой синтаксис
-    implementation minecraft.dependency("com.geckolib:geckolib-forge-26.2:5.5.5")
+    // Версия GeckoLib изменена на 5.5.6 согласно официальной документации для MC 26.2
+    implementation minecraft.dependency("com.geckolib:geckolib-forge-26.2:5.5.6")
 }
 
 jar {
