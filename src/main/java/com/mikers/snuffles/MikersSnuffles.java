@@ -1,17 +1,18 @@
 package com.mikers.snuffles;
 
 import com.mikers.snuffles.registry.SnufflesEntities;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(MikersSnuffles.MOD_ID)
-public final class MikersSnuffles {
+public class MikersSnuffles {
     public static final String MOD_ID = "mikers_snuffles";
 
     public MikersSnuffles() {
-        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
-        SnufflesEntities.ENTITY_TYPES.register(modBus);
-        modBus.addListener(SnufflesEntities::registerAttributes);
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        
+        // Регистрируем сущности
+        SnufflesEntities.ENTITY_TYPES.register(modEventBus);
     }
 }
