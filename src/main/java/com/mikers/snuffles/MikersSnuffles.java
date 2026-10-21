@@ -11,8 +11,6 @@ public class MikersSnuffles {
 
     public MikersSnuffles() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        
-        // Регистрируем сущности
         SnufflesEntities.ENTITY_TYPES.register(modEventBus);
     }
 }
