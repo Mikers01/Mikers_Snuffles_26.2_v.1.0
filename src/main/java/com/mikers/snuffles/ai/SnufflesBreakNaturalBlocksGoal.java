@@ -20,7 +20,7 @@ public class SnufflesBreakNaturalBlocksGoal extends Goal {
     
     @Override
     public boolean canUse() { 
-        return mob.getSnufflesState() != SnufflesState.SLEEP && mob.getTarget() == null && !mob.getNavigation().isDone(); 
+        return mob.getState() != SnufflesState.SLEEP && mob.getTarget() == null && !mob.getNavigation().isDone(); 
     }
     
     @Override
