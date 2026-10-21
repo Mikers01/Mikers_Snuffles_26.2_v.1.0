@@ -36,8 +36,8 @@ repositories {
 
 dependencies {
     minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
-    // Используем официальный синтаксис minecraft.dependency
-    implementation minecraft.dependency("com.geckolib:geckolib-forge-26.2:5.5.6")
+    // Используем локальный файл
+    implementation files('libs/geckolib-forge-26.2-5.5.6.jar')
 }
 
 jar {
