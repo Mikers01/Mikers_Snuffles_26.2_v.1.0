@@ -15,7 +15,7 @@ public class SnufflesTargetGoal<T extends LivingEntity> extends NearestAttackabl
     
     @Override
     public boolean canUse() { 
-        return snuffles.getSnufflesState() != SnufflesState.SLEEP && super.canUse(); 
+        return snuffles.getState() != SnufflesState.SLEEP && super.canUse(); 
     }
     
     @Override
