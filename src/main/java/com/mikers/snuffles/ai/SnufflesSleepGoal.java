@@ -15,7 +15,7 @@ public class SnufflesSleepGoal extends Goal {
     
     @Override
     public boolean canUse() { 
-        return mob.getSnufflesState() == SnufflesState.SLEEP; 
+        return mob.getState() == SnufflesState.SLEEP; 
     }
     
     @Override
