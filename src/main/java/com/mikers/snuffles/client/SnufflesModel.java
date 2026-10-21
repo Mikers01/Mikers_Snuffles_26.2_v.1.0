@@ -3,26 +3,26 @@ package com.mikers.snuffles.client;
 import com.mikers.snuffles.MikersSnuffles;
 import com.mikers.snuffles.entity.SnufflesEntity;
 import net.minecraft.resources.Identifier;
-import com.geckolib.model.GeoModel; // Пакет изменен с software.bernie на com.geckolib
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.state.GeoRenderState; // Важно: параметр теперь GeoRenderState
 
 public class SnufflesModel extends GeoModel<SnufflesEntity> {
-    
+
     @Override
-    public Identifier getModelResource(SnufflesEntity entity) {
-        // В GeckoLib 5 не нужно писать папку "geo/", она подставляется автоматически
+    public Identifier getModelResource(GeoRenderState renderState) {
+        // В GeckoLib 5 префикс пути и расширение файла указывать не нужно
         return Identifier.fromNamespaceAndPath(MikersSnuffles.MOD_ID, "mikers_snuffles");
     }
 
     @Override
-    public Identifier getTextureResource(SnufflesEntity entity) {
-        // Если у тебя 4 текстуры, тут нужна логика выбора. Пока ставим первую.
-        // В GeckoLib 5 не нужно писать папку "textures/entity/", она подставляется автоматически
-        return Identifier.fromNamespaceAndPath(MikersSnuffles.MOD_ID, "mikers_snuffles1");
+    public Identifier getTextureResource(GeoRenderState renderState) {
+        // В отличие от моделей/анимаций, префикс textures/ и .png указывать нужно
+        return Identifier.fromNamespaceAndPath(MikersSnuffles.MOD_ID, "textures/entity/mikers_snuffles1.png");
     }
 
     @Override
     public Identifier getAnimationResource(SnufflesEntity entity) {
-        // В GeckoLib 5 не нужно писать папку "animations/"
+        // В GeckoLib 5 префикс пути и расширение файла указывать не нужно
         return Identifier.fromNamespaceAndPath(MikersSnuffles.MOD_ID, "mikers_snuffles");
     }
 }
