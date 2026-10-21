@@ -16,22 +16,7 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 
 minecraft {
     mappings channel: 'official', version: '26.2'
-
-    // Исправленный блок runs для ForgeGradle 7
-    runs {
-        configureEach {
-            workingDir = layout.projectDirectory.dir('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                mikers_snuffles {
-                    source sourceSets.main
-                }
-            }
-        }
-        client {}
-        server { args '--nogui' }
-    }
+    // Блок runs удалён, так как он вызывает ошибки в ForgeGradle 7 и не нужен для сборки
 }
 
 repositories {
