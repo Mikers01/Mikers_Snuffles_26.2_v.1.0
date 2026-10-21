@@ -2,7 +2,7 @@ package com.mikers.snuffles.client;
 
 import com.mikers.snuffles.entity.SnufflesEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import com.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class SnufflesRenderer extends GeoEntityRenderer<SnufflesEntity> {
 
