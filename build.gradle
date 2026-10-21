@@ -19,11 +19,16 @@ minecraft {
 }
 
 repositories {
-    maven {
-        name = 'GeckoLib'
-        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-        content {
-            includeGroup('com.geckolib')
+    // Официальный синтаксис GeckoLib для ForgeGradle 7
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter {
+            includeGroupAndSubgroups('com.geckolib')
         }
     }
     mavenCentral()
@@ -31,8 +36,7 @@ repositories {
 
 dependencies {
     minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
-    
-    // Версия GeckoLib изменена на 5.5.6 согласно официальной документации для MC 26.2
+    // Используем официальный синтаксис minecraft.dependency
     implementation minecraft.dependency("com.geckolib:geckolib-forge-26.2:5.5.6")
 }
 
