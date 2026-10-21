@@ -17,23 +17,13 @@ minecraft {
 }
 
 repositories {
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = 'GeckoLib'
-                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-            }
-        }
-        filter {
-            includeGroupAndSubgroups('com.geckolib')
-        }
-    }
     mavenCentral()
 }
 
 dependencies {
-    minecraft.dependency "net.minecraftforge:forge:${project.forge_version}"
-    implementation minecraft.dependency("com.geckolib:geckolib-forge-${project.minecraft_version}:${project.geckolib_version}")
+    minecraft.dependency "net.minecraftforge:forge:26.2-60.0.0"
+    // Используем локальный файл GeckoLib, который лежит в папке libs
+    implementation files('libs/geckolib-forge-26.2-5.5.6.jar')
 }
 
 jar {
