@@ -17,39 +17,35 @@ minecraft {
 }
 
 repositories {
-    // Официальный репозиторий GeckoLib
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = 'GeckoLib'
-                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-            }
-        }
-        filter {
-            includeGroupAndSubgroups('com.geckolib')
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroup('com.geckolib')
         }
     }
+
     mavenCentral()
 }
 
 dependencies {
-    // Версия Forge, которую мы нашли на сайте
-    minecraft.dependency "net.minecraftforge:forge:26.2-65.1.0"
-    
-    // Официальный синтаксис для GeckoLib 5.5.6
-    implementation minecraft.dependency("com.geckolib:geckolib-forge-26.2:5.5.6")
+    minecraft.dependency 'net.minecraftforge:forge:26.2-65.1.0'
+
+    implementation fg.deobf(
+        'com.geckolib:geckolib-forge-26.2:5.5.6'
+    )
 }
 
 jar {
     manifest {
         attributes([
-            "Specification-Title"     : "mikers_snuffles",
-            "Specification-Vendor"    : "Mikers01",
-            "Specification-Version"   : "1",
-            "Implementation-Title"    : project.name,
-            "Implementation-Version"  : project.jar.archiveVersion,
-            "Implementation-Vendor"   : "Mikers01",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            'Specification-Title'     : 'mikers_snuffles',
+            'Specification-Vendor'    : 'Mikers01',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'Mikers01',
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
