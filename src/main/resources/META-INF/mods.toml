@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="Miker's Snuffles"
+description='''A cave-dwelling hostile creature that sleeps by day and hunts at night.'''
+[[dependencies.${mod_id}]]
+modId="forge"
+mandatory=true
+versionRange="[66,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+versionRange="[26.2,26.3)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="geckolib"
+mandatory=true
+versionRange="[5,)"
+ordering="AFTER"
+side="BOTH"
